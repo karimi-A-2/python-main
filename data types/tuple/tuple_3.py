@@ -1,0 +1,11 @@
+fruits = ("apple", "apple", "banana", "cherry")
+print(fruits.count('apple'))
+print(fruits[1:].index('apple'))
+fruits = ("apple", "banana", "apple", "cherry")
+print(fruits[1:].index('apple'))
+# print(fruits[0:-1].index('cherry'))
+mytuple = fruits * 2
+fruit_list = list(fruits)
+fruit_list.append("another")
+fruits = tuple(fruit_list)
+print(mytuple)
