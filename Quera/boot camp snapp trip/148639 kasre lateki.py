@@ -2,8 +2,7 @@
 def recursive(num, depth, n):
     if depth == n:
         return num
-    else:
-        return f'{num}+\\frac{{{recursive(2 * num, depth + 1, n)}}}{{{recursive(2 * num + 1, depth + 1, n)}}}'
+    return f'{num}+\\frac{{{recursive(2 * num, depth + 1, n)}}}{{{recursive(2 * num + 1, depth + 1, n)}}}'
 
 
 n = int(input())

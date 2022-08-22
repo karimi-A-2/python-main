@@ -1,4 +1,4 @@
-testTextFile = open("./text.txt")  # mode='r' read(default)
+testTextFile = open("text.txt")  # mode='r' read(default)
 print(testTextFile.read())
 
 testTextFile.seek(1)

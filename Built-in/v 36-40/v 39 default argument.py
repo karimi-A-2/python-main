@@ -1,4 +1,4 @@
-# default value:
+# default arguments:
 def exponent(num, power=2):
     return num ** power
 

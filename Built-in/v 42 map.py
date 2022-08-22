@@ -1,4 +1,7 @@
-# map_obj = map(func, *iterable)
+# map(func, *iterables) --> map object
+#  |
+#  |  Make an iterator that computes the function using arguments from
+#  |  each of the iterables.  Stops when the shortest iterable is exhausted.
 
 numbers = [1, 2, 3, 4, 5]
 

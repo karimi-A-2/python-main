@@ -34,6 +34,7 @@ def showUserInfo(**kwargs):
         print(f"{key} : {value}")
 
 
+# keyword arguments will store in **kwargs as dictionary
 showUserInfo(name="mohammad", family="orodookhani",
              age=23, email="moh96ordo@gmail.com")
 

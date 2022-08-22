@@ -26,4 +26,4 @@ print(sum_2(4, 8))
 
 print(square_1.__name__)
 print(square_2.__name__)
-print(square_3.__name__)  # lambda: anonymous functions ==> no name
+print(square_3.__name__)  # lambda: anonymous functions ==> no name : <lambda>
