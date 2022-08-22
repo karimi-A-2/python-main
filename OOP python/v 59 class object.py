@@ -1,7 +1,7 @@
 class User:
-    user_name = "ali"
-    user_family = "karimi"
-    age = 10
+    shared_name = "ali"
+    shared_family = "karimi"
+    shared_age = 10
     
     def __init__(self, user_name, user_family):
         self.user_name = user_name
@@ -14,6 +14,6 @@ class User:
 aref = User("aref", "k")
 print(aref.user_name)
 print(aref.user_family)
-print(User.user_name)
-print(User.user_family)
-print(aref.age)
+print(User.shared_name)
+print(User.shared_family)
+print(aref.shared_age)

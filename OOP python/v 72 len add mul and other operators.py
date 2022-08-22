@@ -12,16 +12,16 @@ class Person:
     
     def __add__(self, other):
         # return other
-        return self.age + other.age
+        return self.age + other.shared_age
     
     def __mul__(self, other):
-        return self.age * other.age
+        return self.age * other.shared_age
     
     def __truediv__(self, other):
-        return self.age / other.age
+        return self.age / other.shared_age
     
     def __floordiv__(self, other):
-        return self.age // other.age
+        return self.age // other.shared_age
     
     def __pow__(self, power, modulo=None):
         return self.age ** power

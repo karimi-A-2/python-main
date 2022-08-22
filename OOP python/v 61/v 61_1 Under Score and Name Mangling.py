@@ -1,3 +1,8 @@
+# name      => normal
+# _name     => protected(private) but accessible
+# __name    => name mangling
+# __name__  => normal like built in
+
 class User:
     def __init__(self, userName):
         self.userName = userName
@@ -11,17 +16,10 @@ class User:
             print("you are not logged in")
 
 
-class Person:
-    def __init__(self):
-        self.__message = "test message"
-
-
-you = Person()
-print(you._Person__message)
-
 me = User("ali")
-print(me.userName)
+print(me.userName)  # normal attribute
 me.login('123')
-# print(me.__message) # error
+print(me._password)  # Access to a protected member _password of a class
+# print(me.__message)  # AttributeError: 'User' object has no attribute '__message'
 print(dir(me))
 print(me._User__message)
