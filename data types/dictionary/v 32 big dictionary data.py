@@ -9,16 +9,16 @@ course = {
     "sessions": [
         {
             "title": "session-1",
-            "time": 5
+            "time": 5,
         },
         {
             "title": "session-2",
-            "time": 7
+            "time": 7,
         },
         {
             "title": "session-3",
-            "time": 9
-        }
+            "time": 9,
+        },
     ],
     "relatedCourses": [
         {
@@ -36,8 +36,8 @@ course = {
             "videoCount": 22,
             "tags": ["csharp", "online course", "free csharp course"],
             "shortLink":"toplearn.com/c/mZO",
-        }
-    ]
+        },
+    ],
 }
 
 

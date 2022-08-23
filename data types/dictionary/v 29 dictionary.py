@@ -9,7 +9,7 @@ my_dictionary = {
     'count': 3,
     'price': 2500,
     3: True,
-    '3': False
+    '3': False,
 }
 print(my_dictionary)
 print(my_dictionary[3])

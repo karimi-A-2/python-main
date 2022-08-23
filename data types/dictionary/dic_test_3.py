@@ -3,7 +3,7 @@ if __name__ == '__main__':
     car = {
         "brand": "Ford",
         "model": "Mustang",
-        "year": 1964
+        "year": 1964,
     }
     
     x = car.keys()

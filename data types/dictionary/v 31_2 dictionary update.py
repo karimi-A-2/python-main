@@ -3,13 +3,13 @@ first = {
     "family": "ordookhani",
     "email": "moh96ordo@gmail.com",
     "address": "nemuneh",
-    "phone": "0900"
+    "phone": "0900",
 }
 print(first)
 
 second = {
     "age": 50,
-    "name": "milad"
+    "name": "milad",
 }
 print(second)
 
