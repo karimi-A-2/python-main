@@ -44,9 +44,6 @@ User.allowedUsers = ['sina', 'bahman']
 print(mohammad.allowedUsers)
 print(sara.allowedUsers)
 
-
-
-
 # print(User.loggedInUsers)
 # print(User.activeUsersCount)
 #

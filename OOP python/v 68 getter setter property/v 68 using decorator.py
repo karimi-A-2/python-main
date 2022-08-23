@@ -1,5 +1,4 @@
 class Person:
-    activeUsers = 0
     
     def __init__(self, name, family, age):
         self.name = name
@@ -26,13 +25,8 @@ class Person:
 
 
 ali = Person('ali', 'karimi', 19)
-
-# print(ali.age())  # this is normal method if we do not use @property decorator
-
-print(ali.full_name)
-
+print(ali.age())  # TypeError: 'int' object is not callable
 print(ali.age)  # this is property call the getter function
 ali.age = 10  # this will call setter
-print(ali.age)
 ali.age = -1  # this will call setter and raise ValueError
-print(ali.age)
+print(ali.full_name)
