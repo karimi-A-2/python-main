@@ -20,16 +20,11 @@ def get_counts():  # takes so much time 1418 ms !! too much
                 continue
             if ii == i and jj == j:
                 continue
-            add_count(ii, jj)
+            if arr[ii][jj] == '?':
+                soal_khial += 1
+            elif arr[ii][jj] == '!':
+                tajob_khial += 1
     return soal_khial, tajob_khial
-
-
-def add_count(ii, jj):  # takes 507 ms (ok)
-    global soal_khial, tajob_khial
-    if arr[ii][jj] == '?':
-        soal_khial += 1
-    elif arr[ii][jj] == '!':
-        tajob_khial += 1
 
 
 def get_new_char(char, soal_khial, tajob_khial):
