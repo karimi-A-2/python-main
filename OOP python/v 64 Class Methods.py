@@ -20,6 +20,13 @@ class User:
         name, family = string_data.split(',', 1)
         return cls(name, family)
 
+    @staticmethod
+    def foo(a, b):
+        return a ** b
+
+
+User.foo(2, 3)
+
 
 print(User.activeUsersCount)
 ali = User('ali', 'karimi')

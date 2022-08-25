@@ -14,7 +14,7 @@ class Pizza:
         return self.circle_area(self.radius)
     
     @staticmethod
-    def circle_area(r):
+    def circle_area(r):  # independent
         return r ** 2 * math.pi
 
 

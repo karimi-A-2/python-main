@@ -16,4 +16,7 @@ print(aref.user_name)
 print(aref.user_family)
 print(User.shared_name)
 print(User.shared_family)
+
 print(aref.shared_age)
+aref.__class__.shared_age
+User.shared_age

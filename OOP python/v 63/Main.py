@@ -1,7 +1,7 @@
 class Person:
-    users = ['mohammad','milad']
-
-    def __init__(self,name):
+    users = ['mohammad', 'milad']
+    
+    def __init__(self, name):
         self.name = name
 
 
@@ -13,9 +13,7 @@ me = Person('mohammad')
 
 
 print(Person.users)
-
 print(me.users)
 
 me.users = ['sara']
-
 print(Person.users)

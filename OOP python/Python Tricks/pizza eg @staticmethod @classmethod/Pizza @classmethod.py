@@ -15,5 +15,10 @@ class Pizza:
         return cls(['mozzarella', 'tomatoes', 'ham'])
 
 
+for _ in range(30):
+    Pizza.margherita()  # do something
+    # Pizza(['mozzarella', 'tomatoes'])
+    pass
+
 print(Pizza.margherita())
 print(Pizza.prosciutto())

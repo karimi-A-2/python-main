@@ -5,8 +5,8 @@ class User:
         self.age = gotAge
     
     def showFullName(self):
-        return self.name + ' ' + self.family
-        # return f"{self.name} {self.family}"
+        return f"{self.name} {self.family}"
+        # return self.name + ' ' + self.family
     
     def userAgeStatus(self):
         return "adult" if self.age > 18 else "not adult"
