@@ -12,9 +12,6 @@ N, no_channels = data.shape  # signal length and no. of channels
 
 print('signal length:', N)
 
-channel0 = data[:, 0]
-channel1 = data[:, 1]
-
 data_new = np.flip(data)
 
 scipy.io.wavfile.write('output4.wav', sampling_rate, data_new)
