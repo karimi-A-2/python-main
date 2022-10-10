@@ -1,7 +1,8 @@
+import matplotlib
 import numpy as np
 from matplotlib import pyplot as plt
-import matplotlib
-matplotlib.use('TkAgg')
+
+matplotlib.use('macosx')
 
 x = np.arange(0, 2 * np.pi, 0.1)
 x

@@ -1,6 +1,5 @@
 import numpy as np
 import scipy.io.wavfile
-import matplotlib.pyplot as plt
 
 sampling_rate, data = scipy.io.wavfile.read('voice1.wav')
 

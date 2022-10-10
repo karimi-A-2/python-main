@@ -1,7 +1,6 @@
-import matplotlib
+import matplotlib.pyplot
 
 matplotlib.use('macosx')
-import matplotlib.pyplot
 
 data = (3, 6, 9, 12, 15)
 fig, simple_chart = matplotlib.pyplot.subplots()
