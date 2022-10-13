@@ -14,11 +14,11 @@ y2 = np.zeros(n)
 S2 = np.vstack((x2, y2))  # (2, 11)
 S2 = S2.T  # (11, 2)
 
-print(S1.shape)
-print(S2.shape)
+S3 = 0.5 * S1 + 0.5 * S2
 
 plt.plot(S1[:, 0], S1[:, 1], 'bo-')
 plt.plot(S2[:, 0], S2[:, 1], 'ro-')
+plt.plot(S3[:, 0], S3[:, 1], 'go-')
 
 plt.axis('equal')
 plt.xlim(-2, 2)
