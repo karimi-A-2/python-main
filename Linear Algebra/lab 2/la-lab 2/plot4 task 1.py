@@ -27,4 +27,7 @@ for alpha in rng:
     ax.quiver(0, 0, 0, w[0], w[1], w[2], color='b')
     ax.scatter(w[0], w[1], w[2], color='b')
 
+    plt.draw()
+    plt.pause(.1)
+    
 plt.show()
