@@ -2,6 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from face_data import Face1, edges
+
 matplotlib.use('macosx')
 
 
@@ -20,14 +21,20 @@ def plot_face(plt, X, edges, color='b'):
         plt.ylim(-100, 100)
 
 
-th = np.pi / 6
-A = np.array([
-    [np.cos(th), np.sin(th)],
-    [-np.sin(th), np.cos(th)]
-])
-X = Face1 @ A
+rng = np.linspace(-0.7, 0.7, 100)
 
-plot_face(plt, X, edges, color='b')
-plot_face(plt, Face1, edges, color='r')
+for s in rng:
+    plt.cla()
+    
+    A = np.array([
+        [1, 0],
+        [s, 1]
+    ])
+    X = Face1 @ A
+    
+    plot_face(plt, X, edges, color='b')
+    
+    plt.draw()
+    plt.pause(.01)
 
 plt.show()
