@@ -48,27 +48,3 @@ for i in range(3):
     ax.quiver(tail[0, :], tail[1, :], tail[2, :], M[0, :], M[1, :], M[2, :], color='r')
 
 plt.show()
-
-for i in range(3):
-    M = matrices[i]
-    M_name = matrices_names[i]
-    
-    # A 2 by 3 subplot grid, subplot (1 + i) (3D)
-    ax = fig.add_subplot(1, 3, (1 + i), projection='3d')
-    ax.set_title(f'row & col space {M_name}')
-    
-    u = np.random.randn(200, 3)  # (200 x 3)
-    v = u @ M  # (200 x 3) (3 x 3) = (200 x 3)
-    ax.scatter(v[:, 0], v[:, 1], v[:, 2], color='r')
-    
-    tail = np.zeros((3, 3), int)
-    ax.quiver(tail[:, 0], tail[:, 1], tail[:, 2], M[:, 0], M[:, 1], M[:, 2], color='b')
-    
-    u = np.random.randn(3, 200)  # (3 x 200)
-    v = M @ u  # (3 x 3) (3 x 200) = (3 x 200)
-    ax.scatter(v[0, :], v[1, :], v[2, :], color='b')
-    
-    tail = np.zeros((3, 3), int)
-    ax.quiver(tail[0, :], tail[1, :], tail[2, :], M[0, :], M[1, :], M[2, :], color='r')
-
-plt.show()
