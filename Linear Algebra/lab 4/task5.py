@@ -5,12 +5,10 @@ import numpy as np
 
 matplotlib.use('macosx')
 
-G = imageio.imread('nasir-al-mulk-gray.jpg')
 I = imageio.imread('nasir-al-mulk.jpg')
 
-G = np.stack((G,) * 3, axis=-1)
 for alpha in np.linspace(0, 1, 20):
-    J = np.uint8(alpha * I + (1 - alpha) * G)
+    J = np.uint8(I * [np.sin(alpha), np.sin(alpha + np.pi / 4), np.sin(alpha + np.pi / 2)])
     
     plt.imshow(J)
     plt.draw()
