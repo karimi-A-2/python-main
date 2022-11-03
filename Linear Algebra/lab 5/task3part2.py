@@ -33,7 +33,9 @@ t = TargetFace2.ravel()
 
 F = np.stack((face1, face2, face3), axis=1)
 
-for i in range(5):
+av_a, av_b, av_c = 0, 0, 0
+N = 20
+for i in range(N):
     inds = np.random.choice(range(136), 3, replace=False)
     faces = F[inds, :]
     target = t[inds].reshape((3, 1))
@@ -41,7 +43,15 @@ for i in range(5):
     # x = np.linalg.inv(faces) @ target
     a, b, c = x.ravel().round(decimals=3).tolist()
     
-    Face = a * Face1 + b * Face2 + c * Face3
-    plot_face(plt, TargetFace2, edges, color='r')
-    plot_face(plt, Face, edges, color='g')
-    plt.show()
+    av_a += a
+    av_b += b
+    av_c += c
+
+av_a /= N
+av_b /= N
+av_c /= N
+
+Face = av_a * Face1 + av_b * Face2 + av_c * Face3
+plot_face(plt, TargetFace2, edges, color='r')
+plot_face(plt, Face, edges, color='g')
+plt.show()

@@ -34,8 +34,11 @@ F = np.stack((face1, face2, face3), axis=1)
 
 for i in range(5):
     inds = np.random.choice(range(136), 3, replace=False)
-    # choose the equations
-    a, b, c =  # solve the equations
+    faces = F[inds, :]
+    target = t[inds].reshape((3, 1))
+    x = np.linalg.solve(faces, target)
+    # x = np.linalg.inv(faces) @ target
+    a, b, c = x.ravel().round(decimals=3).tolist()
     
     Face = a * Face1 + b * Face2 + c * Face3
     plot_face(plt, TargetFace2, edges, color='r')
