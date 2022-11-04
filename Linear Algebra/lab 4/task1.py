@@ -3,10 +3,10 @@ import timeit
 
 n = 1000
 
-A = np.random.rand(100, 200)
-d1 = np.random.rand(100)
-D1 = np.diag(d1)
-d1 = d1.reshape(100, 1)
+A = np.random.rand(100, 200)    # (100, 200)
+d1 = np.random.rand(100)        # (100,)
+D1 = np.diag(d1)                # (100, 100)
+d1 = d1.reshape(100, 1)         # (100, 1)
 
 
 def f_star():
@@ -20,5 +20,6 @@ def f_at():
 t_star = timeit.timeit(f_star, number=1000) / 1000
 t_at = timeit.timeit(f_at, number=1000) / 1000
 
-print(t_star)       # 8.058375000000006e-06
-print(t_at)         # 8.372479199999999e-05
+print(t_star)       # 8.058375000000006e-06     # 10 times faster
+print(t_at)         # 8.372479199999999e-05     #
+

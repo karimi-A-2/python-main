@@ -13,5 +13,5 @@ def f():
 t1 = timeit.timeit(f, number=1)
 t2 = timeit.timeit(f, number=100) / 100
 
-print(t1)
-print(t2)
+print(t1)   # 0.032070791000000015
+print(t2)   # 0.034719164999999996  more reliable

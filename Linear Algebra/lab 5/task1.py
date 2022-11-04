@@ -34,10 +34,10 @@ F = np.stack((face1, face2, face3), axis=1)
 
 faces = F[0:3, :]
 target = t[0:3].reshape((3, 1))
-x = np.linalg.solve(faces, target)
+x = np.linalg.solve(faces, target)  # (3, 1)
 # x = np.linalg.inv(faces) @ target
 a, b, c = x.ravel().round(decimals=3).tolist()
-
+print(a, b, c)
 Face = a * Face1 + b * Face2 + c * Face3
 
 plot_face(plt, TargetFace2, edges, color='r')

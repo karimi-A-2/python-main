@@ -8,6 +8,7 @@ matplotlib.use('macosx')
 I = imageio.imread('nasir-al-mulk-gray.jpg')
 
 row_0 = np.concatenate((I, np.flip(I, 1)), 1)
+
 I_f = np.flip(I, 0)
 row_1 = np.concatenate((I_f, np.flip(I_f, 1)), 1)
 
