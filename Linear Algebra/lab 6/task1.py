@@ -47,18 +47,19 @@ for i in range(5):
     sum_squares_1 = sum(((F @ x1) - t) ** 2)
     print(i, ">rnd sum square=", sum_squares_1)
     
-    x2 = np.linalg.inv(F.T @ F) @ F.T @ t
+    # x2 = np.linalg.inv(F.T @ F) @ F.T @ t
+    x2, *_ = np.linalg.lstsq(F, t, rcond=None)
     a2, b2, c2 = x2.ravel().tolist()
-
+    
     sum_squares_2 = sum(((F @ x2) - t) ** 2)
     print(i, ">lsq sum square=", sum_squares_2)
-
+    
     Face_rnd = a1 * Face1 + b1 * Face2 + c1 * Face3
     Face_lsq = a2 * Face1 + b2 * Face2 + c2 * Face3
     
-    plot_face(plt, TargetFace, edges, color='r')
-    plot_face(plt, NoisyTargetFace, edges, color='k')
-    plot_face(plt, Face_rnd, edges, color='g')
-    plot_face(plt, Face_lsq, edges, color='b')
+    plot_face(plt, TargetFace, edges, color='r')  # original => red
+    plot_face(plt, NoisyTargetFace, edges, color='k')  # noisy => black
+    plot_face(plt, Face_rnd, edges, color='g')  # rnd => green
+    plot_face(plt, Face_lsq, edges, color='b')  # lsq => blue
     
     plt.show()
