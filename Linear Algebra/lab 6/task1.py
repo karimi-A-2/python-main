@@ -35,20 +35,28 @@ face3 = Face3.ravel()
 t = NoisyTargetFace.ravel()
 
 F = np.stack((face1, face2, face3), axis=1)
+t = t.reshape((136, 1))
 
 for i in range(5):
     inds = np.random.choice(range(136), 3, replace=False)
     faces = F[inds, :]
-    target = t[inds].reshape((3, 1))
+    target = t[inds, :]
     x1 = np.linalg.solve(faces, target)
     a1, b1, c1 = x1.ravel().tolist()
+    
+    sum_squares_1 = sum(((F @ x1) - t) ** 2)
+    print(i, ">rnd sum square=", sum_squares_1)
     
     x2 = np.linalg.inv(F.T @ F) @ F.T @ t
     a2, b2, c2 = x2.ravel().tolist()
 
+    sum_squares_2 = sum(((F @ x2) - t) ** 2)
+    print(i, ">lsq sum square=", sum_squares_2)
+
     Face_rnd = a1 * Face1 + b1 * Face2 + c1 * Face3
     Face_lsq = a2 * Face1 + b2 * Face2 + c2 * Face3
     
+    plot_face(plt, TargetFace, edges, color='r')
     plot_face(plt, NoisyTargetFace, edges, color='k')
     plot_face(plt, Face_rnd, edges, color='g')
     plot_face(plt, Face_lsq, edges, color='b')
