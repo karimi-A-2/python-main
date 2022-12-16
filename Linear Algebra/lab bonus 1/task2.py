@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def inverse(a:np.array) -> np.array:
+def inverse(a: np.array) -> np.array:
     # return np.linalg.inv(a)
     pass
 
@@ -11,9 +11,9 @@ def main():
     a = []
     for _ in range(n):
         a.append(list(float(int, input().split())))
-
+    
     a = np.array(a)
-
+    
     print(inverse(a))
 
 
