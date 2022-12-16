@@ -20,7 +20,10 @@ def upper_triangle(m):
         top_row = m[i]
         for j in range(i + 1, len(m)):
             reduce_row = m[j]
-            reduce_factor = reduce_row[i] / top_row[i] if top_row[i] != 0 else 0
+            if top_row[i] != 0:
+                reduce_factor = reduce_row[i] / top_row[i]
+            else:
+                reduce_factor = 0
             for k in range(i, len(reduce_row)):
                 reduce_row[k] -= top_row[k] * reduce_factor
     return m
@@ -42,10 +45,19 @@ def reduced_re(m):
         bottom_row = m[i]
         for j in reversed(range(i)):
             reduce_row = m[j]
-            reduce_factor = reduce_row[i] / bottom_row[i] if bottom_row[i] != 0 else 0
+            if bottom_row[i] != 0:
+                reduce_factor = reduce_row[i] / bottom_row[i]
+            else:
+                reduce_factor = 0
             for k in range(i, len(reduce_row)):
                 reduce_row[k] -= bottom_row[k] * reduce_factor
     return m
+
+
+def check_non_singular(m):
+    for i in range(len(m)):
+        if m[i][i] == 0:
+            raise MyLinAlgError("a is singular")
 
 
 def solve_equation(a: np.array, b: np.array) -> np.array:
@@ -56,9 +68,12 @@ def solve_equation(a: np.array, b: np.array) -> np.array:
     b = np.vstack(b)
     m = np.concatenate((a, b), 1)
     m = m.tolist()
+    
     m = upper_triangle(m)
+    check_non_singular(m)
     m = row_echelon(m)
     m = reduced_re(m)
+    
     m = np.array(m)
     return m[:, -1]
 
@@ -69,12 +84,13 @@ def inverse(a: np.array) -> np.array:
     n = a.shape[0]
     b = np.identity(a.shape[0])
     m = np.concatenate((a, b), 1)
-    print_m(m)
-    
     m = m.tolist()
+    
     m = upper_triangle(m)
+    check_non_singular(m)
     m = row_echelon(m)
     m = reduced_re(m)
+    
     m = np.array(m)
     return m[:, n:]
 
@@ -94,59 +110,72 @@ def get_b_input():
     return b
 
 
-def get_sample_0():
-    return (
+def get_solve_sample():
+    samples = [
+        (
+            np.array([
+                [-3.0, 2.0, -6.0],
+                [5.0, 7.0, -5.0],
+                [1.0, 4.0, -2.0],
+            ]),
+            np.array([6.0, 6.0, 8.0])
+        ),
+        (
+            np.array([
+                [1.0, 1.0, 1.0],
+                [1.0, -1.0, 2.0],
+                [2.0, 0.0, 3.0],
+            ]),
+            np.array([3.0, 2.0, 1.0])
+        ),
+        (
+            np.array([
+                [1.0, 0.0, 0.0],
+                [1.0, 0.0, 1.0],
+                [0.0, 0.0, 1.0],
+            ]),
+            np.array([1.0, 4.0, 3.0])
+        ),
+        (
+            np.array([
+                [0.0, 0.0, 2.774193548387097],
+                [0.0, 10.333333333333334, -15.0],
+                [-3.0, 2.0, -6.0],
+            ]),
+            np.array([2.774193548387097, 16.0, 6.0])
+        ),
+    ]
+    return samples[2]
+
+
+def get_inv_sample():
+    samples = [
         np.array([
-            [-3.0, 2.0, -6.0],
-            [5.0, 7.0, -5.0],
-            [1.0, 4.0, -2.0],
+            [1.0, 0.0, 2.0, 0.0],
+            [1.0, 1.0, 0.0, 0.0],
+            [1.0, 2.0, 0.0, 1.0],
+            [1.0, 1.0, 1.0, 1.0],
         ]),
-        np.array([6.0, 6.0, 8.0])
-    )
-
-
-def get_sample_1():
-    return (
         np.array([
-            [1.0, 1.0, 1.0],
-            # [1.0, -1.0, 2.0],
-            [2.0, 0.0, 3.0],
+            [1, 4, 6],
+            [4, 7, 7],
+            [3, 3, 1],
         ]),
-        np.array([3.0, 2.0, 1.0])
-    )
-
-
-def get_sample_2():
-    return (
-        np.array([
-            [0.0, 0.0, 2.774193548387097],
-            [0.0, 10.333333333333334, -15.0],
-            [-3.0, 2.0, -6.0],
-        ]),
-        np.array([2.774193548387097, 16.0, 6.0])
-    )
-
-
-def get_inv_sample_0():
-    return np.array([
-        [1.0, 0.0, 2.0, 0.0],
-        [1.0, 1.0, 0.0, 0.0],
-        [1.0, 2.0, 0.0, 1.0],
-        [1.0, 1.0, 1.0, 1.0],
-    ])
+    ]
+    return samples[0]
 
 
 def main_solve():
-    a, b = get_sample_1()
+    a, b = get_solve_sample()
     x = solve_equation(a, b)
     print(x)
 
 
 def main_inverse():
-    a = get_inv_sample_0()
+    a = get_inv_sample()
     inv = inverse(a)
     print(inv)
 
 
 if __name__ == "__main__":
-    main_inverse()
+    main_solve()
