@@ -1,4 +1,6 @@
 import numpy as np
+from numba import jit
+import timeit
 
 
 class MyLinAlgError(ValueError):
@@ -11,6 +13,7 @@ def print_m(m):
     print()
 
 
+@jit(nopython=True)
 def upper_triangle(m):
     for i in range(len(m)):
         candidate = i + 1
@@ -29,6 +32,7 @@ def upper_triangle(m):
     return m
 
 
+@jit(nopython=True)
 def row_echelon(m):
     for row in m:
         scale_factor = 0
@@ -40,6 +44,7 @@ def row_echelon(m):
     return m
 
 
+@jit(nopython=True)
 def reduced_re(m):
     for i in reversed(range(len(m))):
         bottom_row = m[i]
@@ -54,20 +59,22 @@ def reduced_re(m):
     return m
 
 
+@jit(nopython=True)
 def check_non_singular(m):
     for i in range(len(m)):
         if m[i][i] == 0:
             raise MyLinAlgError("a is singular")
 
 
+@jit(nopython=True)
 def solve_equation(a: np.array, b: np.array) -> np.array:
     if a.shape[0] != a.shape[1]:
         raise MyLinAlgError("a not square")
-    if len(b) != a.shape[0]:
+    if b.shape[0] != a.shape[0]:
         raise MyLinAlgError("b dimension mismatch")
     b = np.vstack(b)
     m = np.concatenate((a, b), 1)
-    m = m.tolist()
+    # m = m.tolist()
     
     m = upper_triangle(m)
     check_non_singular(m)
@@ -78,6 +85,7 @@ def solve_equation(a: np.array, b: np.array) -> np.array:
     return m[:, -1]
 
 
+@jit(nopython=True)
 def inverse(a: np.array) -> np.array:
     if a.shape[0] != a.shape[1]:
         raise MyLinAlgError("a not square")
@@ -145,7 +153,7 @@ def get_solve_sample():
             np.array([2.774193548387097, 16.0, 6.0])
         ),
     ]
-    return samples[2]
+    return samples[0]
 
 
 def get_inv_sample():
@@ -171,6 +179,13 @@ def main_solve():
     print(x)
 
 
+def main_solve_time():
+    a, b = get_solve_sample()
+    solve_equation(a, b)
+    time = timeit.timeit(solve_equation(a, b), number=100) / 100
+    print(time)
+
+
 def main_inverse():
     a = get_inv_sample()
     inv = inverse(a)
@@ -178,4 +193,4 @@ def main_inverse():
 
 
 if __name__ == "__main__":
-    main_solve()
+    main_solve_time()

@@ -70,10 +70,13 @@ def solve_equation(a: np.array, b: np.array) -> np.array:
     m = m.tolist()
     
     m = upper_triangle(m)
+    print_m(m)
     check_non_singular(m)
     m = row_echelon(m)
+    print_m(m)
     m = reduced_re(m)
-    
+    print_m(m)
+
     m = np.array(m)
     return m[:, -1]
 
@@ -90,7 +93,7 @@ def inverse(a: np.array) -> np.array:
     check_non_singular(m)
     m = row_echelon(m)
     m = reduced_re(m)
-    
+
     m = np.array(m)
     return m[:, n:]
 
@@ -112,7 +115,7 @@ def get_b_input():
 
 def get_solve_sample():
     samples = [
-        (
+        (       # ok
             np.array([
                 [-3.0, 2.0, -6.0],
                 [5.0, 7.0, -5.0],
@@ -120,7 +123,7 @@ def get_solve_sample():
             ]),
             np.array([6.0, 6.0, 8.0])
         ),
-        (
+        (       # singular
             np.array([
                 [1.0, 1.0, 1.0],
                 [1.0, -1.0, 2.0],
@@ -128,7 +131,7 @@ def get_solve_sample():
             ]),
             np.array([3.0, 2.0, 1.0])
         ),
-        (
+        (       # singular
             np.array([
                 [1.0, 0.0, 0.0],
                 [1.0, 0.0, 1.0],
@@ -136,7 +139,7 @@ def get_solve_sample():
             ]),
             np.array([1.0, 4.0, 3.0])
         ),
-        (
+        (       # ok
             np.array([
                 [0.0, 0.0, 2.774193548387097],
                 [0.0, 10.333333333333334, -15.0],
@@ -145,7 +148,7 @@ def get_solve_sample():
             np.array([2.774193548387097, 16.0, 6.0])
         ),
     ]
-    return samples[2]
+    return samples[1]
 
 
 def get_inv_sample():
