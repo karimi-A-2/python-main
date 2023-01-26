@@ -23,7 +23,7 @@ my_shopping_cart = [
     },
     dict(name='kotline', price=2500)
     # {
-    #     'name': 'kotline',
+    #     'name': 'kotlin',
     #     'price': 2500
     # }
 ]
@@ -37,4 +37,3 @@ my_dictionary_2 = dict(key1='v1', key2='v2', key_n='vn')
 print(my_dictionary_2)
 print(my_dictionary_2['key_n'])
 print(my_dictionary_2['key2'])
-
